@@ -27,18 +27,12 @@ def t_newline(t):
     t.lexer.lineno += len(t.value)
 
 t_ignore  = ' \t'
-
-def t_error(t):
-    print(f"Illegal character '{t.value[0]}'")
-    t.lexer.skip(1)
-
 lexer = lex.lex()
-
 data = '3 + 4 * ( 10 - 5 ) / 2'
 lexer.input(data)
 
 while True:
     tok = lexer.token()
     if not tok:
-        break    # No more input
+        break
     print(tok)
